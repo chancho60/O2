@@ -77,7 +77,7 @@ feature -- Structure Setter
 		external
 			"C [struct <sdl.h>] (struct SDL_Rect, Uint16)"
 		alias
-			"Height"
+			"h"
 	end
 
 	frozen set_SDL_target_area_W (SDL_Rect: POINTER; value: INTEGER)
@@ -85,7 +85,7 @@ feature -- Structure Setter
 		external
 			"C [struct <sdl.h>] (struct SDL_Rect, Uint16)"
 		alias
-			"Width"
+			"w"
 	end
 
 	frozen set_SDL_target_area_X (SDL_Rect: POINTER; value: INTEGER_16)
@@ -93,7 +93,7 @@ feature -- Structure Setter
 		external
 			"C [struct <sdl.h>] (struct SDL_Rect, Sint16)"
 		alias
-			"X"
+			"x"
 	end
 
 	frozen set_SDL_target_area_Y (SDL_Rect: POINTER; value: INTEGER_16)
@@ -101,7 +101,7 @@ feature -- Structure Setter
 		external
 			"C [struct <sdl.h>] (struct SDL_Rect, Sint16)"
 		alias
-			"Y"
+			"y"
 	end
 
  feature -- Structure Getter
@@ -111,14 +111,14 @@ feature -- Structure Setter
 		external
 			"C [struct <SDL.h>] (struct SDL_Surface): int"
 		alias
-			"get_bmp_h"
+			"h"
 		end
 	frozen get_bmp_w (SDL_Surface:POINTER):INTEGER
 			-- Le champ w de la structure `SDL_Surface'
 		external
 			"C [struct <SDL.h>] (struct SDL_Surface): int"
 		alias
-			"get_bmp_w"
+			"w"
 		end
 
 feature --constante
