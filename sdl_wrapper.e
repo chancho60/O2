@@ -61,15 +61,22 @@ feature -- Functions -
 		alias
 			"SDL_Delay"
 		end
-
-	frozen SDL_Quit()
+	frozen SDL_PollEvent (event: POINTER):INTEGER
+			-- Cree un nouveau systeme de decompression JPEG avec `flags'.
+			--SDL_Surface* SDL_SetVideoMode(int width, int height, int bitsperpixel, Uint32 flags);
 		external
-			"C | <sdl.h>"
+			"C (SDL_Event *) : int| <SDL.h>"
 		alias
-			"SDL_Quit"
+			"SDL_PollEvent"
 		end
-
-
+	frozen SDL_QuitEvent (event: POINTER):INTEGER
+			-- Cree un nouveau systeme de decompression JPEG avec `flags'.
+			--SDL_Surface* SDL_SetVideoMode(int width, int height, int bitsperpixel, Uint32 flags);
+		external
+			"C (SDL_Event *) : int| <SDL.h>"
+		alias
+			"SDL_PollEvent"
+		end
 feature -- Structure Setter
 
 	frozen set_SDL_target_area_H (SDL_Rect: POINTER; value: INTEGER)
@@ -120,7 +127,13 @@ feature -- Structure Setter
 		alias
 			"w"
 		end
-
+	frozen get_SDL_EventType (SDL_Event:POINTER):NATURAL_8
+			-- Le champ w de la structure `SDL_Surface'
+		external
+			"C [struct <SDL.h>] (SDL_Event): Uint8"
+		alias
+			"type"
+		end
 feature --constante
 	frozen SDL_INIT_VIDEO:NATURAL_32
 			-- Constante pour valider que
@@ -137,9 +150,16 @@ feature --constante
 			-- l'entete a ete correctement
 			-- lue avec `jpeg_read_header'.
 		external
-			"C inline use <sdl.h>"
+			"C inline use <SDL.h>"
 		alias
 			"SDL_SWSURFACE"
+		end
+
+	frozen SDL_QUIT:NATURAL_8
+		external
+			"C inline use <SDL.h>"
+		alias
+			"SDL_QUIT"
 		end
 
 feature -- Sizeof
@@ -153,4 +173,13 @@ feature -- Sizeof
 			"sizeof(struct SDL_Rect)"
 		end
 
+	frozen sizeof_SDL_Event:INTEGER
+			-- Constante pour valider que
+			-- l'entete a ete correctement
+			-- lue avec `jpeg_read_header'.
+		external
+			"C inline use <SDL.h>"
+		alias
+			"sizeof(SDL_Event)"
+		end
 end
