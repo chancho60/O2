@@ -134,6 +134,13 @@ feature -- Structure Setter
 		alias
 			"type"
 		end
+	frozen get_SDL_keyboard_event_keysym (SDL_Event:POINTER):NATURAL_8
+			-- Le champ w de la structure `SDL_Surface'
+		external
+			"C [struct <SDL.h>] (SDL_keysym): Uint8"
+		alias
+			"sym"
+		end
 feature --constante
 	frozen SDL_INIT_VIDEO:NATURAL_32
 			-- Constante pour valider que
@@ -160,6 +167,26 @@ feature --constante
 			"C inline use <SDL.h>"
 		alias
 			"SDL_QUIT"
+		end
+
+	frozen SDL_KEYDOWN:NATURAL_8
+		external
+			"C inline use <SDL.h>"
+		alias
+			"SDL_KEYDOWN"
+		end
+
+	frozen SDLK_UP:NATURAL_8
+		external
+			"C inline use <SDL_keysym.h>"
+		alias
+			"SDLK_UP"
+		end
+	frozen SDLK_DOWN:NATURAL_8
+		external
+			"C inline use <SDL.h>"
+		alias
+			"SDLK_DOWN"
 		end
 
 feature -- Sizeof

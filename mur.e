@@ -12,11 +12,11 @@ inherit
 
 	IMAGE
 create
-	initialiser
+	creer_mur
 feature
 	l_target_area_mur_haut,l_target_area_mur_bas, l_bmp:POINTER
 	l_blit_surface:INTEGER
-	initialiser
+	creer_mur
 		local
 			l_memory_manager:POINTER
 			l_image_nom:STRING

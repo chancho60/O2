@@ -19,13 +19,15 @@ feature -- Access
 
 	make
 		local
-			l_memory_manager, l_target_area, l_target_area_mur_haut, l_target_area_mur_bas, l_bmp, l_window, l_event:POINTER
+			l_memory_manager, l_target_area, l_bmp, l_window, l_event:POINTER
 			l_image_nom:STRING
 			l_c_string_bmp:C_STRING
 			l_blit_surface, l_flip:INTEGER
 			l_quit, l_event_type:NATURAL_8
 			l_img:IMAGE
 			l_mur:MUR
+			l_barre:BARRE
+			l_deplacement:DEPLACEMENT
 		do
 			--| Add your code here
 			if
@@ -35,7 +37,9 @@ feature -- Access
 			end
 			create l_memory_manager.default_create
 			create l_img
-			create l_mur.initialiser
+			create l_mur.creer_mur
+			create l_barre.creer_barre
+			create l_deplacement
 			l_image_nom := l_img.background
 			create l_c_string_bmp.make (l_image_nom)
 			l_target_area := l_memory_manager.memory_alloc({SDL_WRAPPER}.sizeof_SDL_Rect)
@@ -63,9 +67,16 @@ feature -- Access
 				end
 				l_event_type := {SDL_WRAPPER}.get_SDL_EventType(l_event)
 
+				if
+					l_event_type = {SDL_WRAPPER}.SDL_KEYDOWN
+				then
+					l_deplacement.bouton_presse(l_event, l_barre)
+				end
+
 				l_blit_surface := {SDL_WRAPPER}.SDL_BlitSurface(l_bmp, create {POINTER}, l_window, l_target_area)
 				l_mur.mur_haut(l_window)
 				l_mur.mur_bas(l_window)
+				l_barre.player1_afficher(l_window)
 
 
 				l_flip := {SDL_WRAPPER}.SDL_Flip(l_window)
