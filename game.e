@@ -26,8 +26,9 @@ feature -- Access
 			l_quit, l_event_type:NATURAL_8
 			l_img:IMAGE
 			l_mur:MUR
-			l_barre:BARRE
+			l_barre, l_barre2:BARRE
 			l_deplacement:DEPLACEMENT
+			l_balle:BALLE
 		do
 			--| Add your code here
 			if
@@ -38,7 +39,9 @@ feature -- Access
 			create l_memory_manager.default_create
 			create l_img
 			create l_mur.creer_mur
-			create l_barre.creer_barre
+			create l_barre.creer_barre(10, 300)
+			create l_barre2.creer_barre(1250, 300)
+			create l_balle.creer_balle(30, 450)
 			create l_deplacement
 			l_image_nom := l_img.background
 			create l_c_string_bmp.make (l_image_nom)
@@ -70,18 +73,22 @@ feature -- Access
 				if
 					l_event_type = {SDL_WRAPPER}.SDL_KEYDOWN
 				then
-					l_deplacement.bouton_presse(l_event, l_barre)
+					l_deplacement.bouton_presse(l_event, l_barre, 72, 80)
+					l_deplacement.bouton_presse(l_event, l_barre2, 16, 30)
 				end
 
 				l_blit_surface := {SDL_WRAPPER}.SDL_BlitSurface(l_bmp, create {POINTER}, l_window, l_target_area)
 				l_mur.mur_haut(l_window)
 				l_mur.mur_bas(l_window)
 				l_barre.player1_afficher(l_window)
+				l_barre2.player1_afficher(l_window)
+				l_balle.afficher_balle (l_window)
+				l_deplacement.balle_deplacement(l_balle, l_barre, l_barre2)
 
 
 				l_flip := {SDL_WRAPPER}.SDL_Flip(l_window)
 
-				{SDL_WRAPPER}.SDL_Delay(16)
+				{SDL_WRAPPER}.SDL_Delay(10)
 			end
 
 			if

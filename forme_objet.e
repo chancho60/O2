@@ -13,11 +13,15 @@ create
 feature
 	player1_Y:INTEGER_16
 	player1_X:INTEGER_16
+--	player2_Y:INTEGER_16
+--	player2_X:INTEGER_16
 
-	creer_forme
+	creer_forme(l_X:INTEGER_16 l_Y:INTEGER_16)
 		do
-			player1_Y:=300
-			player1_X:=10
+			player1_Y:=l_Y
+			player1_X:=l_X
+--			player2_Y:=300
+--			player2_X:=1250
 		end
 
 
@@ -42,14 +46,20 @@ feature
 
 		---------------------------------------------player1
 	set_player1_Y(l_player1_Y:INTEGER_16)
-		local
-			l_player_Y:INTEGER_16
 		do
 			player1_Y := player1_Y+l_player1_Y
 		end
-
 	get_player1_Y:INTEGER_16
 		do
 			result := player1_Y
 		end
+--------------------------------------------------player2		
+--	set_player2_Y(l_player2_Y:INTEGER_16)
+--		do
+--			player2_Y := player2_Y+l_player2_Y
+--		end
+--	get_player2_Y:INTEGER_16
+--		do
+--			result := player2_Y
+--		end
 end

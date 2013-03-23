@@ -20,9 +20,9 @@ feature -- Access
 		do
 			result := "player1_jeu.bmp"
 		end
-	player2:STRING
+	balle:STRING
 		do
-			result := "player2_jeu.bmp"
+			result := "balle_jeu.bmp"
 		end
 	 --| Remove line when Void Safety is properly set
 

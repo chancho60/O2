@@ -175,6 +175,12 @@ feature --constante
 		alias
 			"SDL_KEYDOWN"
 		end
+	frozen SDL_KEYUP:NATURAL_8
+		external
+			"C inline use <SDL.h>"
+		alias
+			"SDL_KEYUP"
+		end
 
 	frozen SDLK_UP:NATURAL_8
 		external
