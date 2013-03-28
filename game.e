@@ -29,6 +29,7 @@ feature -- Access
 			l_barre, l_barre2:BARRE
 			l_deplacement:DEPLACEMENT
 			l_balle:BALLE
+			l_pointage: POINTAGE
 		do
 			--| Add your code here
 			if
@@ -38,6 +39,7 @@ feature -- Access
 			end
 			create l_memory_manager.default_create
 			create l_img
+			create l_pointage.creer_pointage
 			create l_mur.creer_mur
 			create l_barre.creer_barre(10, 300)
 			create l_barre2.creer_barre(1250, 300)
@@ -83,7 +85,7 @@ feature -- Access
 				l_barre.player1_afficher(l_window)
 				l_barre2.player1_afficher(l_window)
 				l_balle.afficher_balle (l_window)
-				l_deplacement.balle_deplacement(l_balle, l_barre, l_barre2)
+				--l_deplacement.balle_deplacement(l_balle, l_barre, l_barre2)
 
 
 				l_flip := {SDL_WRAPPER}.SDL_Flip(l_window)

@@ -30,19 +30,19 @@ feature
 				end
 			end
 
-	balle_deplacement(l_balle:BALLE l_barre1:BARRE l_barre2:BARRE)
-		do
-			if
-				l_balle.get_droite = true
-			then
-				if
-					l_barre2.get_player1_Y > (l_balle.get_player1_Y+30) and l_barre2.get_player1_Y < (l_balle.get_player1_Y - 230) and l_balle.get_player1_Y = 1250
-				then
-					print ("but!!!!!!!!")
-				end
-				l_balle.set_player1_X(10)
-			end
-		end
+--	balle_deplacement(l_balle:BALLE l_barre1:BARRE l_barre2:BARRE)
+--		do
+--			if
+--				l_balle.get_droite = true
+--			then
+--				if
+--					l_barre2.get_player1_Y > (l_balle.get_player1_Y+30) and l_barre2.get_player1_Y < (l_balle.get_player1_Y - 230) and l_balle.get_player1_Y = 1250
+--				then
+--					print ("but!!!!!!!!")
+--				end
+--				l_balle.set_player1_X(10)
+--			end
+--		end
 
 ---------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------

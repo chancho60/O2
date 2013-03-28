@@ -18,8 +18,16 @@
 				<platform excluded_value="windows"/>
 			</condition>
 		</external_library>
+		<external_library location="F:\Ecole\objet 2\Pong\esqlite.lib"/>
 		<precompile name="base_pre" location="$ISE_PRECOMP\base.ecf"/>
-		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
+		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf">
+			<option void_safety="none">
+			</option>
+		</library>
+		<library name="sqlite" location="C:\Program Files\Eiffel Software\EiffelStudio 7.1 GPL\unstable\library\persistency\database\sqlite3\sqlite.ecf">
+			<option void_safety="none">
+			</option>
+		</library>
 		<cluster name="pong" location=".\" recursive="true">
 			<file_rule>
 				<exclude>/EIFGENs$</exclude>
