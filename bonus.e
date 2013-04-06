@@ -1,8 +1,8 @@
 note
-	description: "Summary description for {BONUS}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	description: "Code des bonus. (Bonus)"
+	author: "Anthony et Étienne"
+	date: "28 mars 2013"
+	revision: "Alpha 3.2"
 
 class
 	BONUS

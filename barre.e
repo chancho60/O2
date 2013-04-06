@@ -1,8 +1,8 @@
 note
-	description: "Summary description for {BARRE}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	description: "Code de la barre. (Image de la barre)"
+	author: "Anthony et Étienne"
+	date: "28 mars 2013"
+	revision: "Alpha 3.2"
 
 class
 	BARRE
@@ -15,15 +15,8 @@ create
 	creer_barre
 
 feature -- Access
-
---	BARRE_BOUGER: DEPLACEMENT
---			-- `BARRE_BOUGER'
---		attribute Result := ({like BARRE_BOUGER}).default end --| Remove line when Void Safety is properly set
-
 	l_target_area_player, l_bmp_player:POINTER
 	l_blit_surface_player:INTEGER
-
-
 
 	creer_barre(l_X:INTEGER_16 l_Y:INTEGER_16)
 		local
@@ -48,14 +41,4 @@ feature -- Access
 
 			l_blit_surface_player := {SDL_WRAPPER}.SDL_BlitSurface(l_bmp_player, create {POINTER}, l_window, l_target_area_player)
 		end
---	player2_afficher(l_window:POINTER)
---		do
---			{SDL_WRAPPER}.set_SDL_target_area_H(l_target_area_player, {SDL_WRAPPER}.get_bmp_h(l_bmp_player))
---			{SDL_WRAPPER}.set_SDL_target_area_W(l_target_area_player, {SDL_WRAPPER}.get_bmp_w(l_bmp_player))
---			{SDL_WRAPPER}.set_SDL_target_area_X(l_target_area_player, player2_X)
---			{SDL_WRAPPER}.set_SDL_target_area_Y(l_target_area_player, player2_Y)
---			print (player2_Y)
-
---			l_blit_surface_player := {SDL_WRAPPER}.SDL_BlitSurface(l_bmp_player, create {POINTER}, l_window, l_target_area_player)
---		end
 end

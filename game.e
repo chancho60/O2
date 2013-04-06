@@ -1,9 +1,8 @@
 note
-	description: "Summary description for {GAME}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
-	EIS: "name=Unnamed", "protocol=URI", "src=http://www.yourwebsite.com"
+	description: "Code du jeu principal"
+	author: "Anthony et Étienne"
+	date: "28 mars 2013"
+	revision: "Alpha 3.2"
 
 class
 	GAME
@@ -12,10 +11,6 @@ inherit
 create
 	make
 feature -- Access
-
---	BACKGROUND: IMAGE
---			 `BACKGROUND'
---		attribute Result := ({like BACKGROUND}).default end --| Remove line when Void Safety is properly set
 
 	make
 		local
@@ -30,8 +25,9 @@ feature -- Access
 			l_deplacement:DEPLACEMENT
 			l_balle:BALLE
 			l_pointage: POINTAGE
+			l_point:BOOLEAN
 		do
-			--| Add your code here
+			--création des objets et background
 			if
 				{SDL_WRAPPER}.SDL_Init({SDL_WRAPPER}.SDL_INIT_VIDEO)<0
 			then
@@ -59,13 +55,13 @@ feature -- Access
 
 			l_event := l_memory_manager.memory_alloc({SDL_WRAPPER}.sizeof_SDL_Event)
 
-			from
+			from -- boucle principale du jeu
 				l_event_type := {SDL_WRAPPER}.get_SDL_EventType(l_event)
 				l_quit := {SDL_WRAPPER}.SDL_QUIT
 			until
 				l_quit=l_event_type
 			loop
-
+				--début gestion du clavier
 				if
 					{SDL_WRAPPER}.SDL_PollEvent(l_event)<1
 				then
@@ -75,17 +71,29 @@ feature -- Access
 				if
 					l_event_type = {SDL_WRAPPER}.SDL_KEYDOWN
 				then
-					l_deplacement.bouton_presse(l_event, l_barre, 72, 80)
-					l_deplacement.bouton_presse(l_event, l_barre2, 16, 30)
+					l_deplacement.bouton_presse(l_event, l_barre)
+					l_deplacement.bouton_presse(l_event, l_barre2)----en attendant le réseau
 				end
+				--fin gestion du clavier
 
 				l_blit_surface := {SDL_WRAPPER}.SDL_BlitSurface(l_bmp, create {POINTER}, l_window, l_target_area)
+				l_deplacement.balle (l_balle, l_barre, l_barre2)
 				l_mur.mur_haut(l_window)
 				l_mur.mur_bas(l_window)
 				l_barre.player1_afficher(l_window)
 				l_barre2.player1_afficher(l_window)
-				l_balle.afficher_balle (l_window)
-				--l_deplacement.balle_deplacement(l_balle, l_barre, l_barre2)
+
+				if
+					l_balle.get_x > 1220
+				then
+					l_point := true
+				end
+				if
+					l_point = false
+				then
+					l_balle.afficher_balle (l_window)
+				end
+
 
 
 				l_flip := {SDL_WRAPPER}.SDL_Flip(l_window)

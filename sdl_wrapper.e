@@ -1,8 +1,8 @@
 note
-	description: "Summary description for {SDL_WRAPPER}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	description: "W50 cents (Wrappeur)"
+	author: "Anthony et Étienne"
+	date: "28 mars 2013"
+	revision: "Alpha 3.2"
 
 class
 	SDL_WRAPPER
@@ -82,7 +82,7 @@ feature -- Structure Setter
 	frozen set_SDL_target_area_H (SDL_Rect: POINTER; value: INTEGER)
 			-- Modifie le champ h de la structure `SDL_Surface' par la valeur `h'.
 		external
-			"C [struct <sdl.h>] (struct SDL_Rect, Uint16)"
+			"C [struct <SDL.h>] (struct SDL_Rect, Uint16)"
 		alias
 			"h"
 	end
@@ -90,7 +90,7 @@ feature -- Structure Setter
 	frozen set_SDL_target_area_W (SDL_Rect: POINTER; value: INTEGER)
 			-- Modifie le champ w de la structure `SDL_Surface' par la valeur `h'.
 		external
-			"C [struct <sdl.h>] (struct SDL_Rect, Uint16)"
+			"C [struct <SDL.h>] (struct SDL_Rect, Uint16)"
 		alias
 			"w"
 	end
@@ -98,7 +98,7 @@ feature -- Structure Setter
 	frozen set_SDL_target_area_X (SDL_Rect: POINTER; value: INTEGER_16)
 			-- Modifie le champ h de la structure `SDL_Surface' par la valeur `h'.
 		external
-			"C [struct <sdl.h>] (struct SDL_Rect, Sint16)"
+			"C [struct <SDL.h>] (struct SDL_Rect, Sint16)"
 		alias
 			"x"
 	end
@@ -106,7 +106,7 @@ feature -- Structure Setter
 	frozen set_SDL_target_area_Y (SDL_Rect: POINTER; value: INTEGER_16)
 			-- Modifie le champ w de la structure `SDL_Surface' par la valeur `h'.
 		external
-			"C [struct <sdl.h>] (struct SDL_Rect, Sint16)"
+			"C [struct <SDL.h>] (struct SDL_Rect, Sint16)"
 		alias
 			"y"
 	end
@@ -134,7 +134,24 @@ feature -- Structure Setter
 		alias
 			"type"
 		end
-	frozen get_SDL_keyboard_event_keysym (SDL_Event:POINTER):NATURAL_8
+
+	frozen get_SDL_EventKey (event:POINTER):POINTER
+			-- Le champ w de la structure `SDL_Surface'
+		external
+			"C inline use <SDL.h>"
+		alias
+			"(SDL_KeyboardEvent *)(&(((SDL_Event *)$event)->key))"
+		end
+
+	frozen get_SDL_keysym (event:POINTER):POINTER
+			-- Le champ w de la structure `SDL_Surface'
+		external
+			"C inline use <SDL.h>"
+		alias
+			"(SDL_keysym *)(&(((SDL_KeyboardEvent *)$event)->keysym))"
+		end
+
+	frozen get_SDL_sym (SDL_keysym:POINTER):NATURAL_8
 			-- Le champ w de la structure `SDL_Surface'
 		external
 			"C [struct <SDL.h>] (SDL_keysym): Uint8"
@@ -142,12 +159,13 @@ feature -- Structure Setter
 			"sym"
 		end
 feature --constante
+
 	frozen SDL_INIT_VIDEO:NATURAL_32
 			-- Constante pour valider que
 			-- l'entete a ete correctement
 			-- lue avec `jpeg_read_header'.
 		external
-			"C inline use <sdl.h>"
+			"C inline use <SDL.h>"
 		alias
 			"SDL_INIT_VIDEO"
 		end

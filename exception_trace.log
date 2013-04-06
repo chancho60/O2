@@ -1,0 +1,57 @@
+
+pong: system execution failed.
+Following is the set of recorded exceptions:
+
+-------------------------------------------------------------------------------
+Class / Object      Routine                Nature of exception           Effect
+-------------------------------------------------------------------------------
+SQLITE_DATABASE     commit @4              is_in_transaction:           
+<0000000002CE0474>                         Precondition violated.        Fail
+-------------------------------------------------------------------------------
+POINTAGE            creer_pointage @10                                  
+<0000000002CE0450>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+GAME                make @5                                             
+<0000000002CE0408>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+GAME                root's creation                                     
+<0000000002CE0408>                         Routine failure.              Exit
+-------------------------------------------------------------------------------
+
+pong: system execution failed.
+Following is the set of recorded exceptions:
+
+-------------------------------------------------------------------------------
+Class / Object      Routine                Nature of exception           Effect
+-------------------------------------------------------------------------------
+POINTAGE            creer_pointage @7      l_insert_is_compiled:        
+<0000000002DC0468>                         Assertion violated.           Fail
+-------------------------------------------------------------------------------
+POINTAGE            creer_pointage @7                                   
+<0000000002DC0468>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+GAME                make @5                                             
+<0000000002DC0420>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+GAME                root's creation                                     
+<0000000002DC0420>                         Routine failure.              Exit
+-------------------------------------------------------------------------------
+
+pong: system execution failed.
+Following is the set of recorded exceptions:
+
+-------------------------------------------------------------------------------
+Class / Object      Routine                Nature of exception           Effect
+-------------------------------------------------------------------------------
+SQLITE_DATABASE     commit @4              is_in_transaction:           
+<0000000002DC048C>                         Precondition violated.        Fail
+-------------------------------------------------------------------------------
+POINTAGE            creer_pointage @12                                  
+<0000000002DC0468>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+GAME                make @5                                             
+<0000000002DC0420>                         Routine failure.              Fail
+-------------------------------------------------------------------------------
+GAME                root's creation                                     
+<0000000002DC0420>                         Routine failure.              Exit
+-------------------------------------------------------------------------------

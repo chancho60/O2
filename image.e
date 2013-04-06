@@ -1,8 +1,8 @@
 note
-	description: "Summary description for {IMAGE}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	description: "Banque des noms des images."
+	author: "Anthony et Étienne"
+	date: "28 mars 2013"
+	revision: "Alpha 3.2"
 
 class
 	IMAGE
@@ -10,30 +10,19 @@ class
 feature -- Access
 	background:STRING
 		do
-			result := "background_jeu.bmp"
+			result := "Ressources/background_jeu.bmp"
 		end
 	mur:STRING
 		do
-			result := "mur_jeu.bmp"
+			result := "Ressources/mur_jeu.bmp"
 		end
 	player1:STRING
 		do
-			result := "player1_jeu.bmp"
+			result := "Ressources/player1_jeu.bmp"
 		end
 	balle:STRING
 		do
-			result := "balle_jeu.bmp"
+			result := "Ressources/balle_jeu.bmp"
 		end
-	 --| Remove line when Void Safety is properly set
-
-	 --| Remove line when Void Safety is properly set
-
-	 --| Remove line when Void Safety is properly set
-
-	 --| Remove line when Void Safety is properly set
-
-	 --| Remove line when Void Safety is properly set
-
-	 --| Remove line when Void Safety is properly set
 
 end
