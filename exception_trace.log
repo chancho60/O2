@@ -55,3 +55,4 @@ GAME                make @5
 GAME                root's creation                                     
 <0000000002DC0420>                         Routine failure.              Exit
 -------------------------------------------------------------------------------
+Catcall detected in {DEPLACEMENT}.balle for arg#1: expected BALLE but got BALLE

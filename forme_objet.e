@@ -11,52 +11,34 @@ inherit
 create
 	creer_forme
 feature
-	player1_Y:INTEGER_16
-	player1_X:INTEGER_16
+	Y:INTEGER_16
+	X:INTEGER_16
+	target_area, l_bmp:POINTER
+	nom:STRING
 
-	creer_forme(l_X:INTEGER_16 l_Y:INTEGER_16)
+	creer_forme(l_X:INTEGER_16 l_Y:INTEGER_16 l_nom:STRING)
+		local
+			l_memory_manager:POINTER
+			l_image_nom:STRING
+			l_c_string_bmp:C_STRING
+			l_blit_surface:INTEGER
 		do
-			player1_Y:=l_Y
-			player1_X:=l_X
+			create l_memory_manager.default_create
+			create l_c_string_bmp.make (l_nom)
+			target_area := l_memory_manager.memory_alloc({SDL_WRAPPER}.sizeof_SDL_Rect)
+			l_bmp := {SDL_WRAPPER}.SDL_LoadBMP(l_c_string_bmp.item)
+			Y:=l_Y
+			X:=l_X
+			nom:=l_nom
 		end
-
-
-		----------------------------murs
-	mur_haut_X:INTEGER_16
-		do
-			result:=0
-		end
-	mur_haut_Y:INTEGER_16
-		do
-			result:=0
-		end
-	mur_bas_X:INTEGER_16
-		do
-			result:=0
-		end
-	mur_bas_Y:INTEGER_16
-		do
-			result:=700
-		end
-
-
 		---------------------------------------------player
 	set_player1_Y(l_player1_Y:INTEGER_16)
 		do
-			player1_Y := player1_Y+l_player1_Y
+			Y := Y+l_player1_Y
 		end
-	get_player1_Y:INTEGER_16
-		do
-			result := player1_Y
-		end
-
 	set_X(l_player1_X:INTEGER_16)
 		do
-			player1_X := player1_X+l_player1_X
-		end
-	get_X:INTEGER_16
-		do
-			result := player1_X
+			X := X+l_player1_X
 		end
 
 end

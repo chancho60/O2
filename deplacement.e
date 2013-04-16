@@ -8,7 +8,7 @@ class
 	DEPLACEMENT
 
 feature
-	bouton_presse(l_event:POINTER l_barre:BARRE)
+	bouton_presse(l_event:POINTER l_barre:FORME_OBJET)
 		local
 			l_keyboard_event, l_keysym:POINTER
 		do
@@ -18,7 +18,7 @@ feature
 				{SDL_WRAPPER}.get_SDL_sym(l_keysym) = {SDL_WRAPPER}.SDLK_DOWN
 			then
 				if
-					l_barre.get_player1_y < 500
+					l_barre.y < 500
 				then
 					l_barre.set_player1_Y(10)
 				end
@@ -28,60 +28,66 @@ feature
 				{SDL_WRAPPER}.get_SDL_sym(l_keysym) = {SDL_WRAPPER}.SDLK_UP
 			then
 				if
-					l_barre.get_player1_y > 20
+					l_barre.Y > 20
 				then
 					l_barre.set_player1_Y(-10)
 				end
 			end
 	end
 
-	balle(l_balle:BALLE l_barre1:BARRE l_barre2:BARRE)
+	balle(l_balle:BALLE l_barre1:FORME_OBJET l_barre2:FORME_OBJET)
 		local
 			l_colision_32:INTEGER_32
 		do  ---vérifications
 			if
-				l_balle.get_droite
+				l_balle.droite
 			then
 				if
-					l_balle.get_X+l_balle.get_vitesse > 1220
+					l_balle.X+l_balle.vitesse > 1220
 				then
 					if
-						l_barre2.get_player1_y < (l_balle.get_player1_y+30) and l_barre2.get_player1_y > (l_balle.get_player1_y - 200)
+						l_barre2.Y < (l_balle.Y+30) and l_barre2.Y > (l_balle.Y - 200)
 					then
-						l_colision_32 := l_balle.get_X-(1220-(l_balle.get_vitesse-(1220-l_balle.get_x)))
+						l_colision_32 := l_balle.X-(1220-(l_balle.vitesse-(1220-l_balle.X)))
 						l_balle.set_x(l_colision_32.as_integer_16)
 						l_balle.set_droite (false)
 					end
 				end
 			end
 			if
-				l_balle.get_droite = false
+				l_balle.droite = false
 			then
 				if
-					l_balle.get_X-l_balle.get_vitesse < 30
+					l_balle.X-l_balle.vitesse < 30
 				then
-					l_colision_32 := l_balle.get_X-(30+(l_balle.get_vitesse-(l_balle.get_x-30)))
-					l_balle.set_x (l_colision_32.as_integer_16)
-					l_balle.set_droite (true)
+					if
+						l_barre1.Y < (l_balle.Y+30) and l_barre1.Y > (l_balle.Y - 200)
+					then
+						l_colision_32 := l_balle.X-(30+(l_balle.vitesse-(l_balle.X-30)))
+						l_balle.set_x (l_colision_32.as_integer_16)
+						l_balle.set_droite (true)
+					end
 				end
 			end
 
 
 
 			if
-				l_balle.get_monte
+				l_balle.monte
 			then
 				if
-					l_balle.get_player1_Y < 40
+					l_balle.y-l_balle.vitesse < 30
 				then
+				--	l_colision_32 := l_balle.Y-(
 					l_balle.set_monte (false)
 				end
 			end
+
 			if
-				l_balle.get_monte = false
+				l_balle.monte = false
 			then
 				if
-					l_balle.get_player1_Y > 670
+					l_balle.Y > 670
 				then
 					l_balle.set_monte (true)
 				end
@@ -90,25 +96,25 @@ feature
 
 			 ---déplacement
 			 if
-			 	l_balle.get_droite
+			 	l_balle.droite
 			 then
-			 	l_balle.set_x (l_balle.get_vitesse)
+			 	l_balle.set_x (l_balle.vitesse)
 			 end
 			 if
-			 	l_balle.get_droite = false
+			 	l_balle.droite = false
 			 then
-			 	l_balle.set_x (-l_balle.get_vitesse)
+			 	l_balle.set_x (-l_balle.vitesse)
 			 end
 
 			 if
-			 	l_balle.get_monte
+			 	l_balle.monte
 			 then
-			 	l_balle.set_player1_Y (-l_balle.get_vitesse)
+			 	l_balle.set_player1_Y (-l_balle.vitesse)
 			 end
 			 if
-			 	l_balle.get_monte = false
+			 	l_balle.monte = false
 			 then
-			 	l_balle.set_player1_Y (l_balle.get_vitesse)
+			 	l_balle.set_player1_Y (l_balle.vitesse)
 			 end
 		end
 end

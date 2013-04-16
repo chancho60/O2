@@ -8,21 +8,15 @@ class
 	IMAGE
 
 feature -- Access
-	background:STRING
+	afficher(l_window:POINTER l_forme:FORME_OBJET)
+		local
+			l_blit_surface:INTEGER
 		do
-			result := "Ressources/background_jeu.bmp"
-		end
-	mur:STRING
-		do
-			result := "Ressources/mur_jeu.bmp"
-		end
-	player1:STRING
-		do
-			result := "Ressources/player1_jeu.bmp"
-		end
-	balle:STRING
-		do
-			result := "Ressources/balle_jeu.bmp"
-		end
+			{SDL_WRAPPER}.set_SDL_target_area_H(l_forme.target_area, {SDL_WRAPPER}.get_bmp_h(l_forme.l_bmp))
+			{SDL_WRAPPER}.set_SDL_target_area_W(l_forme.target_area, {SDL_WRAPPER}.get_bmp_w(l_forme.l_bmp))
+			{SDL_WRAPPER}.set_SDL_target_area_X(l_forme.target_area, l_forme.X)
+			{SDL_WRAPPER}.set_SDL_target_area_Y(l_forme.target_area, l_forme.Y)
 
+			l_blit_surface := {SDL_WRAPPER}.SDL_BlitSurface(l_forme.l_bmp, create {POINTER}, l_window, l_forme.target_area)
+		end
 end
